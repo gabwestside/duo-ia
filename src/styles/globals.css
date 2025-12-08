@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /*
+    =================================================================
+    Animação 1: Efeito de Flutuação (float)
+    =================================================================
+  */
+
+  /* 
+    O `@keyframes` é como se fosse a "receita" da sua animação.
+    Você define os passos e o que deve acontecer em cada um deles.
+    O nome "float" é o nome que daremos a esta animação.
+  */
+  @keyframes float {
+    /* 
+      "0%, 100%" significa "no início (0%) e no final (100%) da animação".
+      Nesses pontos, o elemento não terá nenhum deslocamento vertical (para cima ou para baixo).
+    */
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    /*
+      "50%" significa "exatamente na metade do tempo da animação".
+      Neste ponto, o elemento será deslocado 15 pixels para CIMA.
+      O resultado é um movimento suave de subir e descer.
+    */
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  /*
+    Esta é a classe que você vai adicionar a um elemento HTML para APLICAR a animação "float".
+    Ex: <img class="animate-float" src="..." />
+  */
+  .animate-float {
+    /* 
+      A propriedade "animation" é um atalho para configurar tudo da animação de uma vez.
+      Lendo da esquerda para a direita:
+      - "float": O nome da animação (o @keyframes que definimos acima).
+      - "4s": A duração total da animação (4 segundos para ir de 0% a 100%).
+      - "ease-in-out": A "curva de tempo". Controla a velocidade. "ease-in-out" faz a animação começar devagar, acelerar no meio e terminar devagar de novo.
+      - "infinite": Faz a animação repetir para sempre.
+    */
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /*
+    =================================================================
+    Animação 2: Aparecer e Desaparecer (fadeIn / fadeOut)
+    =================================================================
+  */
+
+  /*
+    Define uma animação chamada "fadeIn".
+    "from" é um atalho para "0%". "to" é um atalho para "100%".
+  */
+  @keyframes fadeIn {
+    /* No início, o elemento está completamente transparente (invisível). */
+    from {
+      opacity: 0;
+    }
+    /* No final, o elemento está completamente opaco (visível). */
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Define a animação inversa, para desaparecer. */
+  @keyframes fadeOut {
+    /* No início, está visível. */
+    from {
+      opacity: 1;
+    }
+    /* No final, está invisível. */
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* Classe para aplicar o efeito de aparecer. */
+  .animate-fadeIn {
+    /* Aplica a animação "fadeIn", com duração de 0.6 segundos. */
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  /* Classe para aplicar o efeito de desaparecer. */
+  .animate-fadeOut {
+    /* Aplica a animação "fadeOut", com duração de 0.6 segundos. */
+    animation: fadeOut 0.6s ease-in-out;
+  }
+
+  /*
+    =================================================================
+    Animação 3: Deslizar para Cima (slideUp)
+    =================================================================
+  */
+
+  @keyframes slideUp {
+    /* 
+      No início, o elemento está deslocado 100px para BAIXO e está invisível.
+      O "translate(-50%, ...)" é usado para manter o elemento centralizado no eixo X,
+      uma técnica comum para modais e pop-ups.
+    */
+    from {
+      transform: translate(-50%, 100px);
+      opacity: 0;
+    }
+    /*
+      No final, o elemento volta à sua posição original (sem deslocamento Y) e fica visível.
+    */
+    to {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+
+  /* Classe para aplicar o efeito de deslizar para cima. */
+  .animate-slide-up {
+    /* 
+      Aplica a animação "slideUp", com duração de 0.3 segundos.
+      "ease-out" faz a animação começar rápido e desacelerar no final.
+    */
+    animation: slideUp 0.3s ease-out;
+  }
+}

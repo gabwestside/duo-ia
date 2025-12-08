@@ -1,13 +1,35 @@
+import { useAuth } from "@/contexts/AuthContext";
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [ error, setError ] = useState<string | null>(null);
+  const [ loading, setLoading ] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log({ email, senha });
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleSubmit = async (e: FormEvent) => {
+   e.preventDefault();
+
+    setError(null);
+
+    setLoading(true);
+
+    try {
+        await login(email);   
+        
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
+    } catch (err) {
+      setError("Falha ao entrar. Verifique suas credenciais.");
+    } finally {
+      setLoading(false);
+    }
+
   };
 
   return (
