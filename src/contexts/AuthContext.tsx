@@ -1,12 +1,13 @@
-import type { UserProfile } from "@/hooks/useUserProfile";
 import { createContext, useContext } from "react";
+import type { User, Session, AuthError } from "@supabase/supabase-js"
 
 export interface AuthContextType {
-  user: UserProfile | null;
+  user: User | null;
   isAuthenticated: boolean;
   loading: boolean;
-  login: (email: string) => void;
-  logout: () => void;
+  signUp: (name: string, email: string, password: string) => Promise<{error: Error | null}>;
+  login: (email: string, password: string) => Promise<{ error: AuthError | null }> ;
+  logout: () => Promise<void>;
 }
 
 // ------------------------------------------------------------

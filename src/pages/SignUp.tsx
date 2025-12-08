@@ -1,13 +1,21 @@
+import { useAuth } from "@/contexts/AuthContext";
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
+
+  const { signUp } = useAuth();
+
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmSenha, setConfirmSenha] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (senha !== confirmSenha) {
@@ -15,7 +23,26 @@ const Signup = () => {
       return;
     }
 
-    console.log({ name, email, senha });
+    console.log("[SignUp] Submissão iniciada", { name, email });
+
+    try {
+      setLoading(true);
+      console.log("[SignUp] Chamando signUp...");
+      const { error } = await signUp(name, email, senha);
+      console.log("[SignUp] Retorno signUp", { error });
+
+      if (error) {
+        console.error("[SignUp] Erro ao criar conta:", error);
+      } else {
+        console.log("[SignUp] Conta criada com sucesso!");
+      }
+    } catch (error) {
+      console.error("[SignUp] Exceção não tratada:", error);
+    } finally {
+      setLoading(false);
+    }
+
+    navigate('/')
   };
 
   return (
@@ -85,6 +112,7 @@ const Signup = () => {
           {/* Botão */}
           <button
             type="submit"
+            disabled={loading}
             className="w-full py-3 bg-[#9225D4] hover:bg-[#7a1fb3] transition rounded-lg text-white font-semibold text-center cursor-pointer"
           >
             Criar conta

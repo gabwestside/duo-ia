@@ -1,4 +1,5 @@
 import { useAuth } from "@/contexts/AuthContext";
+import supabase from "@/services/supabase";
 import { useEffect, useState } from "react";
 
 export interface UserProfile {
@@ -29,15 +30,20 @@ export const useUserProfile = () => {
       setLoading(true);
 
       try {
-        const userProfile: UserProfile = {
-          id: "user-123",
-          name: user.name,
-          email: user.email,
-          totalXP: user.totalXP,
-        };
-
-        setProfile(userProfile);
-        setError(null);
+        const { data, error } = await supabase
+          .from("user_profiles")
+          .select("id, name, email, totalXP")
+          .eq("id", user.id)
+          .single();
+        
+        if (error) {
+          console.log("Erro ao buscar perfil do usuário:", error);
+          setError("Erro ao buscar perfil do usuário.");
+          setProfile(null);
+        } else{
+          setProfile(data);
+          setError(null);
+        }
       } catch (err) {
         setError("Falha ao carregar perfil do usuário.");
         setProfile(null);

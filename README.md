@@ -71,3 +71,21 @@ export default defineConfig([
   },
 ])
 ```
+
+- configurar o supabase
+- integrar o cadastro com o supabase
+  - faltou só redirecionar
+
+- integrar o login com o supabase - 10 min
+
+- buscar os dados do xp do usuário no header - 10 min 
+
+- armazenar as liçoes feitas no supabase 
+- marcar a unidade como concluida
+- integrar as informações na AnswerFeedbackPopUp
+- integrar as informações na LessonModal
+- integrar as informações do resultado das lições em:
+ - Lesson Success
+ - Lesson Failure
+ 
+
