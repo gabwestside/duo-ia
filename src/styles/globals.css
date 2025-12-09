@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer utilities {
   /*
@@ -17,7 +17,8 @@
       "0%, 100%" significa "no início (0%) e no final (100%) da animação".
       Nesses pontos, o elemento não terá nenhum deslocamento vertical (para cima ou para baixo).
     */
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0px);
     }
     /*
@@ -29,7 +30,7 @@
       transform: translateY(-15px);
     }
   }
-  
+
   /*
     Esta é a classe que você vai adicionar a um elemento HTML para APLICAR a animação "float".
     Ex: <img class="animate-float" src="..." />

@@ -1,6 +1,6 @@
-import React, { type ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext'; // Estou assumindo que seu hook de autenticação está neste caminho
+import { type ReactNode } from 'react';
+import { Navigate } from 'react-router-dom';
 
 // Definindo os tipos das props que o componente vai receber.
 // 'children' representa os componentes filhos que serão renderizados se o usuário estiver logado.

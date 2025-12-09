@@ -1,5 +1,5 @@
 const AnswerFeedbackPopUp = () => {
-    return <div>Answer Feedback Pop Up</div>;
+  return <div>Answer Feedback Pop Up</div>
 }
 
-export default AnswerFeedbackPopUp;
+export default AnswerFeedbackPopUp
