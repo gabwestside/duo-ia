@@ -10,8 +10,8 @@ export interface Question {
 // Tipo para uma lição
 export interface Lesson {
   id: string
-  unitId: number // Qual unidade esta lição pertence
-  unit: number // Número da unidade (começando em 1)
+  unitId: number  // Qual unidade esta lição pertence
+  unit: number    // Número da unidade (começando em 1)
   title: string
   description: string
   questions: Question[]
@@ -37,10 +37,10 @@ export const lessonsData: Lesson[] = [
       },
       {
         id: 'q2',
-        question: 'Qual palavra-chave cria uma variável mutável?',
-        options: ['const', 'let', 'var', 'variable'],
-        correctAnswer: 1,
-        explanation: 'let permite reatribuição, diferente de const.',
+        question: 'Como você chama uma função chamada "minhaFuncao"?',
+        options: ['minhaFuncao()', 'call minhaFuncao', 'minhaFuncao[]', 'run minhaFuncao'],
+        correctAnswer: 0,
+        explanation: 'Use parênteses () após o nome da função para executá-la.',
       },
     ],
   },
@@ -62,18 +62,20 @@ export const lessonsData: Lesson[] = [
       {
         id: 'q2',
         question: 'Como você chama uma função chamada "minhaFuncao"?',
-        options: [
-          'minhaFuncao()',
-          'call minhaFuncao',
-          'minhaFuncao[]',
-          'run minhaFuncao',
-        ],
+        options: ['minhaFuncao()', 'call minhaFuncao', 'minhaFuncao[]', 'run minhaFuncao'],
         correctAnswer: 0,
         explanation: 'Use parênteses () após o nome da função para executá-la.',
       },
       {
         id: 'q3',
         question: 'Qual palavra-chave retorna um valor de uma função?',
+        options: ['return', 'output', 'result', 'give'],
+        correctAnswer: 0,
+        explanation: 'return é usado para retornar valores de funções.',
+      },
+      {
+        id: 'q4',
+        question: 'TESTE Qual palavra-chave retorna um valor de uma função?',
         options: ['return', 'output', 'result', 'give'],
         correctAnswer: 0,
         explanation: 'return é usado para retornar valores de funções.',
@@ -122,12 +124,7 @@ export const lessonsData: Lesson[] = [
       {
         id: 'q1',
         question: 'Como você acessa a propriedade de um objeto?',
-        options: [
-          'object.property',
-          'object->property',
-          'object::property',
-          'object@property',
-        ],
+        options: ['object.property', 'object->property', 'object::property', 'object@property'],
         correctAnswer: 0,
         explanation: 'Use ponto (.) para acessar propriedades de objetos.',
       },
@@ -140,17 +137,10 @@ export const lessonsData: Lesson[] = [
       },
       {
         id: 'q3',
-        question:
-          'Como você adiciona uma nova propriedade "idade" a um objeto "pessoa"?',
-        options: [
-          'pessoa.idade = 25',
-          'pessoa->idade = 25',
-          'pessoa[idade] = 25',
-          'pessoa::idade = 25',
-        ],
+        question: 'Como você adiciona uma nova propriedade "idade" a um objeto "pessoa"?',
+        options: ['pessoa.idade = 25', 'pessoa->idade = 25', 'pessoa[idade] = 25', 'pessoa::idade = 25'],
         correctAnswer: 0,
-        explanation:
-          'Use notação de ponto para adicionar ou modificar propriedades.',
+        explanation: 'Use notação de ponto para adicionar ou modificar propriedades.',
       },
     ],
   },
@@ -171,20 +161,17 @@ export const lessonsData: Lesson[] = [
       },
       {
         id: 'q2',
-        question:
-          'Qual palavra-chave executa código quando a condição é falsa?',
+        question: 'Qual palavra-chave executa código quando a condição é falsa?',
         options: ['else', 'otherwise', 'then', 'when'],
         correctAnswer: 0,
         explanation: 'else executa o bloco quando a condição do if é falsa.',
       },
       {
         id: 'q3',
-        question:
-          'Qual estrutura testa múltiplas condições de forma mais limpa?',
+        question: 'Qual estrutura testa múltiplas condições de forma mais limpa?',
         options: ['if...else', 'switch', 'for', 'while'],
         correctAnswer: 1,
-        explanation:
-          'switch é ideal para testar múltiplos valores de uma variável.',
+        explanation: 'switch é ideal para testar múltiplos valores de uma variável.',
       },
     ],
   },

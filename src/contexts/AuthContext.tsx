@@ -1,26 +1,13 @@
-import { createContext, useContext } from 'react'
-import type { User as DBUser, Session, AuthError } from '@supabase/supabase-js'
+import { createContext, useContext } from "react";
+import type { User } from "@supabase/supabase-js"
 
 export interface AuthContextType {
-  user: DBUser | null
-  isAuthenticated: boolean
-  loading: boolean
-  signUp: (
-    name: string,
-    email: string,
-    password: string
-  ) => Promise<{ error: Error | null }>
-  login: (
-    email: string,
-    password: string
-  ) => Promise<{ error: AuthError | null }>
-  logout: () => Promise<void>
-}
-
-export type User = DBUser & {
-  email: string
-  totalXP: number
-  name: string
+  user: User | null;
+  isAuthenticated: boolean;
+  loading: boolean;
+  signUp: (name: string, email: string, password: string) => Promise<{error: Error | null}>;
+  login: (email: string, password: string) => Promise<{ error: Error | null }> ;
+  logout: () => Promise<void>;
 }
 
 // ------------------------------------------------------------
@@ -29,7 +16,9 @@ export type User = DBUser & {
 // createContext cria um "container" que vai guardar nossos dados.
 // O valor inicial é undefined porque será preenchido pelo Provider.
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined)
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 // ------------------------------------------------------------
 // 3. HOOK PERSONALIZADO (useAuth)
@@ -37,12 +26,12 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 // Este hook facilita o uso do contexto em outros componentes.
 // Em vez de usar useContext(AuthContext), usamos apenas useAuth().
 export const useAuth = () => {
-  const context = useContext(AuthContext)
+  const context = useContext(AuthContext);
 
   // Se alguém tentar usar useAuth() fora do AuthProvider, mostra erro
   if (!context) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider')
+    throw new Error("useAuth deve ser usado dentro de um AuthProvider");
   }
 
-  return context
-}
+  return context;
+};

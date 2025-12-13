@@ -1,40 +1,43 @@
-import GrayStar from '@/assets/images/gray-star.png'
-import GreenStar from '@/assets/images/green-star.png'
+import GrayStar from "@/assets/images/gray-star.png";
+import GreenStar from "@/assets/images/green-star.png";
 
 interface LessonNodeProps {
-  status: 'locked' | 'completed' | 'available'
-  onClick?: () => void
+  status: "locked" | "completed" | "available";
+  onClick?: () => void;
 }
 
 const LessonNode = ({ status, onClick }: LessonNodeProps) => {
-  const isLocked = status === 'locked'
-  const isCompleted = status === 'completed'
+  const isLocked = status === "locked";
+  const isCompleted = status === "completed";
+
+  console.log("LessonNode status:", status);
+  
 
   return (
-    <div className='relative flex flex-col items-center'>
+    <div className="relative flex flex-col items-center">
       <button
         onClick={isLocked ? undefined : onClick}
         disabled={isLocked}
         className={`
           relative
           transition-all duration-300 hover:scale-105
-          ${isLocked ? 'cursor-not-allowed' : 'cursor-pointer'}
+          ${isLocked ? "cursor-not-allowed" : "cursor-pointer"}
         `}
       >
         <img
           src={isCompleted ? GreenStar : GrayStar}
           alt={
             isLocked
-              ? 'Lição bloqueada'
+              ? "Lição bloqueada"
               : isCompleted
-              ? 'Lição completada'
-              : 'Lição disponível'
+              ? "Lição completada"
+              : "Lição disponível"
           }
-          className='w-20 h-20 object-contain drop-shadow-lg'
+          className="w-20 h-20 object-contain drop-shadow-lg"
         />
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default LessonNode
+export default LessonNode;
